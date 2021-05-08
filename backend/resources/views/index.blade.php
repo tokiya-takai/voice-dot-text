@@ -15,11 +15,15 @@
   <body>
     <h1>VOICE.TEXT</h1>
     <div id="app">
-      <textarea id="textarea" rows=20 cols=100></textarea>
-      <button id="button" onclick="toggleStartStop()"></button>
+      <web-speech-api-component></web-speech-api-component>
+
+      <!-- <textarea id="textarea" rows=10 cols=80></textarea>
+      <button id="button" onclick="toggleStartStop()"></button> -->
+
     </div>
 
-    <script type="text/javascript" src="js/recognition.js"></script>
+    <!-- <script type="text/javascript" src="js/recognition.js"></script> -->
+
     <script src="{{ mix('js/app.js') }}"></script>
   </body>
 </html>
