@@ -15,7 +15,7 @@
   <body>
     <h1>VOICE.TEXT</h1>
     <div id="app">
-      <web-speech-api-component></web-speech-api-component>
+      <web-speech-api-component :csrf="{{json_encode(csrf_token())}}"></web-speech-api-component>
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
   </body>

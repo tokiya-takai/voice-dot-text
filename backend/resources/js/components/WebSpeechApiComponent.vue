@@ -1,14 +1,18 @@
 <template>
   <div class="container">
-    <div class="input-area">
-      <button v-on:click="switchLanguage()">{{ language }}</button>
-      <button v-on:click="toggleStartStop()">{{ status }}</button>
-      <textarea id="textarea"></textarea>
-    </div>
-    <div class="result-area">
-      <button @click="setText()">決定</button>
-      <textarea :value="text"></textarea>
-    </div>
+      <div class="input-area">
+        <button v-on:click="switchLanguage()">{{ language }}</button>
+        <button v-on:click="toggleStartStop()">{{ status }}</button>
+        <textarea id="textarea"></textarea>
+      </div>
+      <div class="result-area">
+        <button @click="setText()">決定</button>
+      </div>
+      <form action="/download" method="post">
+        <input type="hidden" name="_token" v-bind:value="csrf">
+        <textarea :value="text" name="text_data"></textarea>
+        <input type="submit" value="ダウンロード">
+    </form>
   </div>
 </template>
 
@@ -21,6 +25,12 @@ export default {
       recognizing: false,
       recognition: null,
       language: 'ja',
+    }
+  },
+  props:  {
+    csrf: {
+      type: String,
+      required: true,
     }
   },
   created() {

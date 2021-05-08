@@ -1859,6 +1859,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1868,6 +1872,12 @@ __webpack_require__.r(__webpack_exports__);
       recognition: null,
       language: 'ja'
     };
+  },
+  props: {
+    csrf: {
+      type: String,
+      required: true
+    }
   },
   created: function created() {
     this.initialize();
@@ -37495,9 +37505,21 @@ var render = function() {
           }
         },
         [_vm._v("決定")]
-      ),
+      )
+    ]),
+    _vm._v(" "),
+    _c("form", { attrs: { action: "/download", method: "post" } }, [
+      _c("input", {
+        attrs: { type: "hidden", name: "_token" },
+        domProps: { value: _vm.csrf }
+      }),
       _vm._v(" "),
-      _c("textarea", { domProps: { value: _vm.text } })
+      _c("textarea", {
+        attrs: { name: "text_data" },
+        domProps: { value: _vm.text }
+      }),
+      _vm._v(" "),
+      _c("input", { attrs: { type: "submit", value: "ダウンロード" } })
     ])
   ])
 }
