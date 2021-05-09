@@ -14,6 +14,7 @@ class HomeController extends Controller
 
     public function download(Request $request){
         $textData = $request->text_data;
+        $rename = $request->rename;
 
         $path = 'storage/files/';
         if( is_writable($path) ) {
@@ -23,8 +24,8 @@ class HomeController extends Controller
 
             // ファイルをダウンロード
             $full_path = 'storage/files/' . $file_name . ".txt";
-            $name = "test.txt";
-            return response()->download($full_path, $name)->deleteFileAfterSend(true);
+            $rename = $rename . ".txt";
+            return response()->download($full_path, $rename)->deleteFileAfterSend(true);
         }
     }
     

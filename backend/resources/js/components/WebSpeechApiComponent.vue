@@ -10,6 +10,8 @@
       </div>
       <form action="/download" method="post">
         <input type="hidden" name="_token" v-bind:value="csrf">
+        <p>ダウンロードするファイルに名前をつける</p>
+        <input type="text" name="rename">
         <textarea v-model="text" name="text_data"></textarea>
         <input v-if="text == ''" value="ダウンロード" readonly="true">
         <input v-else type="submit" value="ダウンロード">
