@@ -8,14 +8,17 @@
     <title>VOICE.TEXT</title>
 
     <!-- Styles -->
-    <!-- <link href="css/destyle.css" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+
+    <link href="css/destyle.css" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
   </head>
   <body>
-    <h1>VOICE.TEXT</h1>
+    <header><h1>VOICE.TEXT</h1></header>
     <div id="app">
-      <web-speech-api-component></web-speech-api-component>
+      <web-speech-api-component :csrf="{{json_encode(csrf_token())}}"></web-speech-api-component>
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
   </body>

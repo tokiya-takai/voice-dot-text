@@ -1859,6 +1859,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1866,8 +1875,14 @@ __webpack_require__.r(__webpack_exports__);
       status: "録音",
       recognizing: false,
       recognition: null,
-      language: 'ja'
+      language: '日本語'
     };
+  },
+  props: {
+    csrf: {
+      type: String,
+      required: true
+    }
   },
   created: function created() {
     this.initialize();
@@ -1902,7 +1917,7 @@ __webpack_require__.r(__webpack_exports__);
       this.status = "録音";
     },
     setText: function setText() {
-      if (this.language == "ja") {
+      if (this.language == "日本語") {
         var newText = textarea.value + '。' + '\n';
       } else {
         var newText = textarea.value + '.' + '\n';
@@ -1913,10 +1928,10 @@ __webpack_require__.r(__webpack_exports__);
       this.initialize();
     },
     switchLanguage: function switchLanguage() {
-      if (this.language == "ja") {
-        this.language = "en";
+      if (this.language == "日本語") {
+        this.language = "英語";
       } else {
-        this.language = "ja";
+        this.language = "日本語";
       }
     }
   }
@@ -37457,47 +37472,96 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "input-area" }, [
-      _c(
-        "button",
-        {
-          on: {
-            click: function($event) {
-              return _vm.switchLanguage()
+      _c("div", { staticClass: "flex-area" }, [
+        _c("textarea", { attrs: { id: "textarea" } }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "rec",
+            on: {
+              click: function($event) {
+                return _vm.toggleStartStop()
+              }
             }
-          }
-        },
-        [_vm._v(_vm._s(_vm.language))]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          on: {
-            click: function($event) {
-              return _vm.toggleStartStop()
+          },
+          [_vm._v(_vm._s(_vm.status))]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "enter",
+            on: {
+              click: function($event) {
+                return _vm.setText()
+              }
             }
-          }
-        },
-        [_vm._v(_vm._s(_vm.status))]
-      ),
-      _vm._v(" "),
-      _c("textarea", { attrs: { id: "textarea" } })
+          },
+          [_vm._v("決定")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "lang",
+            on: {
+              click: function($event) {
+                return _vm.switchLanguage()
+              }
+            }
+          },
+          [_vm._v(_vm._s(_vm.language))]
+        )
+      ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "result-area" }, [
-      _c(
-        "button",
-        {
+      _c("form", { attrs: { action: "/download", method: "post" } }, [
+        _c("input", {
+          attrs: { type: "hidden", name: "_token" },
+          domProps: { value: _vm.csrf }
+        }),
+        _vm._v(" "),
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.text,
+              expression: "text"
+            }
+          ],
+          attrs: { name: "text_data" },
+          domProps: { value: _vm.text },
           on: {
-            click: function($event) {
-              return _vm.setText()
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.text = $event.target.value
             }
           }
-        },
-        [_vm._v("決定")]
-      ),
-      _vm._v(" "),
-      _c("textarea", { domProps: { value: _vm.text } })
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("ダウンロードするファイルに名前をつける")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "rename",
+          attrs: { type: "text", name: "rename", placeholder: "音声テキスト" }
+        }),
+        _c("span", [_vm._v(".txt")]),
+        _vm._v(" "),
+        _vm.text == ""
+          ? _c("input", {
+              staticClass: "fake-download-btn",
+              attrs: { value: "ダウンロード", readonly: "true" }
+            })
+          : _c("input", {
+              staticClass: "download-btn",
+              attrs: { type: "submit", value: "ダウンロード" }
+            })
+      ])
     ])
   ])
 }

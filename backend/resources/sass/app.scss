@@ -1,1 +1,120 @@
+body {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  width: 100vw;
+  header {
+    height: 100px;
+    background-color: skyblue;
+    color: white;
+    h1 {
+      line-height: 100px;
+      width: 100%;
+      text-align: center;
+      font-size: 50px;
+    }
+  }
+  .container {
+    width: 70%;
+    height: calc(100vh - 100px);
+    margin: 0 auto;
+    .input-area {
+      height: 30%;
+      // display: grid;
+      // grid-template-columns: 35% 35% 30%;
+      // grid-template-rows:
+      //         [margin-top] 20%
+      //         [textarea] 30%
+      //         [buttons] 30%
+      //         [margin-bottom] 20%;
+      // justify-items: center;
+      // align-items: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .flex-area {
+        width: 100%;
+        textarea {
+          // grid-column: 1 / -1;
+          // grid-row: textarea;
+          width: 100%;
+          border: 1px solid black;
+          border-radius: 3px;
+          resize: none;
+          margin-bottom: 10px;
+        }
+        button {
+          border: 1px solid black;
+          border-radius: 3px;
+          background-color: #eee;
+          padding: 5px;
+          height: 30px;
+          text-align: center;
+        }
+        .rec {
+          // grid-column: 1 / -3;
+          // grid-row: buttons;
+          width: 60px;
+          // margin-left: 65%;
+          // margin-right: 5%;
+        }
+        .enter {
+          // grid-column: 2 / -2;
+          // grid-row: buttons;
+          width: 60px;
+          // margin-right: 65%;
+          // margin-right: 5%;
+        }
+        .lang {
+          // grid-column: 3 / -1;
+          // grid-row: buttons;
+          width: 80px;
+        }
 
+      }
+    }
+    .result-area {
+      height: 70%;
+      form {
+        width: 100%;
+        height: 100%;
+        textarea {
+          border: 1px solid black;
+          border-radius: 3px;
+          resize: none;
+          width: 100%;
+          height: 70%;
+        }
+        p {
+          margin: 10px 0;
+        }
+        .rename {
+          border: 1px solid black;
+          border-radius: 3px;
+          resize: none;
+          width: 50%;
+          height: 30px;
+        }
+        .fake-download-btn {
+          width: 150px;
+          height: 30px;
+          border: 1px solid black;
+          border-radius: 3px;
+          background-color: #eee;
+          padding: 5px;
+          margin-left: 50px;
+          text-align: center;
+          opacity: 0.5;
+        }
+        .download-btn {
+          width: 150px;
+          height: 30px;
+          border: 1px solid black;
+          border-radius: 3px;
+          background-color: #eee;
+          padding: 5px;
+          margin-left: 50px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

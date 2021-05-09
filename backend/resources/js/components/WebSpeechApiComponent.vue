@@ -1,14 +1,23 @@
 <template>
   <div class="container">
-    <div class="input-area">
-      <button v-on:click="switchLanguage()">{{ language }}</button>
-      <button v-on:click="toggleStartStop()">{{ status }}</button>
-      <textarea id="textarea"></textarea>
-    </div>
-    <div class="result-area">
-      <button @click="setText()">決定</button>
-      <textarea :value="text"></textarea>
-    </div>
+      <div class="input-area">
+        <div class="flex-area">
+          <textarea id="textarea"></textarea>
+          <button v-on:click="toggleStartStop()" class="rec">{{ status }}</button>
+          <button @click="setText()" class="enter">決定</button>
+          <button v-on:click="switchLanguage()" class="lang">{{ language }}</button>
+        </div>
+      </div>
+      <div class="result-area">
+        <form action="/download" method="post">
+          <input type="hidden" name="_token" v-bind:value="csrf">
+          <textarea v-model="text" name="text_data"></textarea>
+          <p>ダウンロードするファイルに名前をつける</p>
+          <input type="text" name="rename" class="rename" placeholder="音声テキスト"><span>.txt</span>
+          <input v-if="text == ''" value="ダウンロード" readonly="true" class="fake-download-btn">
+          <input v-else type="submit" value="ダウンロード" class="download-btn">
+        </form>
+      </div>
   </div>
 </template>
 
@@ -20,7 +29,13 @@ export default {
       status: "録音",
       recognizing: false,
       recognition: null,
-      language: 'ja',
+      language: '日本語',
+    }
+  },
+  props:  {
+    csrf: {
+      type: String,
+      required: true,
     }
   },
   created() {
@@ -56,7 +71,7 @@ export default {
       this.status = "録音";
     },
     setText() {
-      if(this.language == "ja"){
+      if(this.language == "日本語"){
         var newText = textarea.value + '。' + '\n';
       } else {
         var newText = textarea.value + '.' + '\n';
@@ -66,10 +81,10 @@ export default {
       this.initialize();
     },
     switchLanguage() {
-      if(this.language == "ja") {
-        this.language = "en";
+      if(this.language == "日本語") {
+        this.language = "英語";
       } else {
-        this.language = "ja";
+        this.language = "日本語";
       }
     },
   },

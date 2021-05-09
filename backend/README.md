@@ -7,56 +7,54 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+<p align="center"><a href="https://github.com/tokiya-takai/live_with/tree/main/backend"><img src="https://user-images.githubusercontent.com/76773842/115679627-be19a500-a38d-11eb-9fe5-9f719a4e6920.png" width="400"><a></p>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/76773842/115685325-1606da80-a393-11eb-9ec8-74fa975c6950.jpeg" width="50">
+<img src="https://user-images.githubusercontent.com/76773842/115685404-28811400-a393-11eb-90c0-16ff513f7e45.jpeg" width="50">
+<img src="https://user-images.githubusercontent.com/76773842/115685639-5ebe9380-a393-11eb-94a7-bf3f67ae75b2.png" width="50">
+<img src="https://user-images.githubusercontent.com/76773842/115685719-71d16380-a393-11eb-920e-e0321e4b6a4f.png" width="50">
+<img src="https://user-images.githubusercontent.com/76773842/115685830-8e6d9b80-a393-11eb-8fd5-0607c58187b3.png" width="50">
+<img src="https://user-images.githubusercontent.com/76773842/115685885-9cbbb780-a393-11eb-86a4-4874da724ae5.png" width="50">
+<img src="https://user-images.githubusercontent.com/76773842/115685967-b230e180-a393-11eb-981f-082fbc497a04.png" width="50">
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 概要
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Web上で音声入力を行い、作成したテキストをテキストファイルとしてダウンロードすることができるアプリケーションです。<br />
+パソコン入力が苦手な方など、タイピングでの入力に時間が掛かる場合にお使いいただけます。<br />
+音声入力では、改行や句読点が入力されないため、自動で改行、句点(。)を入力する仕様になっています。<br />
+日本語・英語の切り替えが可能で、英語の場合はピリオド(.)が付与されます。<br />
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 開発期間
+・2021/05/06 実装開始<br />
+・2021/05/09 機能実装後、デプロイ<br />
 
-## Learning Laravel
+## 開発環境
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+MacOS Catalina 10.15.7<br />
+PHP 7.4.19<br />
+Laravel Framework 8.40.0<br />
+Vue.js 2.6.12<br />
+Docker 20.10.6<br />
+Docker Compose 1.29.0<br />
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 機能
 
-## Laravel Sponsors
+・Web Speech APIを使用した音声入力機能<br />
+・Vue.jsを使用した表示切り替え機能<br />
+・ファイル生成、ダウンロード及び削除機能<br />
+・ダウンロードファイル名指定機能<br />
+ダウンロードする際に、保存するファイルの名前を指定できます。指定しなければ、デフォルトの名前(音声テキスト.txt)でダウンロードされます。<br />
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## 今後実装したい機能
 
-### Premium Partners
+・現時点では、最低限のテキストエリアやボタンなので、配置やデザインをアップデートしてユーザビリティを高めたい。<br />
+【具体案】<br />
+視覚的に認識しやすくするために、録音・停止ボタンなどにマークを追加したい。<br />
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+## 課題
 
-## Contributing
+### ダウンロードボダンが押せない不具合の修正
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+通常使用では問題ないが、ブラウザバックなどのページ遷移が発生した場合、テキストエリアにテキストが残っていてもダウンロードボタンが押せない。<br />
+改行するか、最後の改行を削除することで再度押せるようにはなるが、ユーザビリティを下げているため、改善したい。<br />
