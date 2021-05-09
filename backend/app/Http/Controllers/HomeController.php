@@ -17,14 +17,14 @@ class HomeController extends Controller
         if($request->rename == ""){$rename = "音声テキスト";}
         else {$rename = $request->rename;}
 
-        $path = 'storage/files/';
+        $path = 'files/';
         if( is_writable($path) ) {
             // 入力された内容でテキストファイルを作成
             $file_name = date('Y-m-d-H-i-s') . $this->random(12);
             file_put_contents( $path . $file_name . ".txt", $textData);
 
             // ファイルをダウンロード
-            $full_path = 'storage/files/' . $file_name . ".txt";
+            $full_path = $path . $file_name . ".txt";
             $rename = $rename . ".txt";
             return response()->download($full_path, $rename)->deleteFileAfterSend(true);
         }
