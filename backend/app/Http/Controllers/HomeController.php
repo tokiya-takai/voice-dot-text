@@ -22,10 +22,12 @@ class HomeController extends Controller
             file_put_contents( $path . $file_name . ".txt", $textData);
 
             // ファイルをダウンロード
-            return Storage::download('public/files/' . $file_name . ".txt");
+            $full_path = 'storage/files/' . $file_name . ".txt";
+            $name = "test.txt";
+            return response()->download($full_path, $name)->deleteFileAfterSend(true);
         }
     }
-
+    
     private function random($length)
     {
         return substr(str_shuffle('1234567890abcdefghijklmnopqrstuvwxyz'), 0, $length);

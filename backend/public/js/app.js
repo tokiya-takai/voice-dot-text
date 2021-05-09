@@ -1863,6 +1863,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -37515,11 +37516,29 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("textarea", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.text,
+            expression: "text"
+          }
+        ],
         attrs: { name: "text_data" },
-        domProps: { value: _vm.text }
+        domProps: { value: _vm.text },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.text = $event.target.value
+          }
+        }
       }),
       _vm._v(" "),
-      _c("input", { attrs: { type: "submit", value: "ダウンロード" } })
+      _vm.text == ""
+        ? _c("input", { attrs: { value: "ダウンロード", readonly: "true" } })
+        : _c("input", { attrs: { type: "submit", value: "ダウンロード" } })
     ])
   ])
 }

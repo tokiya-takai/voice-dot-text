@@ -10,8 +10,9 @@
       </div>
       <form action="/download" method="post">
         <input type="hidden" name="_token" v-bind:value="csrf">
-        <textarea :value="text" name="text_data"></textarea>
-        <input type="submit" value="ダウンロード">
+        <textarea v-model="text" name="text_data"></textarea>
+        <input v-if="text == ''" value="ダウンロード" readonly="true">
+        <input v-else type="submit" value="ダウンロード">
     </form>
   </div>
 </template>
