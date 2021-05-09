@@ -1,21 +1,23 @@
 <template>
   <div class="container">
       <div class="input-area">
-        <button v-on:click="switchLanguage()">{{ language }}</button>
-        <button v-on:click="toggleStartStop()">{{ status }}</button>
-        <textarea id="textarea"></textarea>
+        <div class="flex-area">
+          <textarea id="textarea"></textarea>
+          <button v-on:click="toggleStartStop()" class="rec">{{ status }}</button>
+          <button @click="setText()" class="enter">決定</button>
+          <button v-on:click="switchLanguage()" class="lang">{{ language }}</button>
+        </div>
       </div>
       <div class="result-area">
-        <button @click="setText()">決定</button>
+        <form action="/download" method="post">
+          <input type="hidden" name="_token" v-bind:value="csrf">
+          <textarea v-model="text" name="text_data"></textarea>
+          <p>ダウンロードするファイルに名前をつける</p>
+          <input type="text" name="rename" class="rename"><span>.txt</span>
+          <input v-if="text == ''" value="ダウンロード" readonly="true" class="download-btn">
+          <input v-else type="submit" value="ダウンロード" class="download-btn">
+        </form>
       </div>
-      <form action="/download" method="post">
-        <input type="hidden" name="_token" v-bind:value="csrf">
-        <p>ダウンロードするファイルに名前をつける</p>
-        <input type="text" name="rename">
-        <textarea v-model="text" name="text_data"></textarea>
-        <input v-if="text == ''" value="ダウンロード" readonly="true">
-        <input v-else type="submit" value="ダウンロード">
-    </form>
   </div>
 </template>
 
@@ -27,7 +29,7 @@ export default {
       status: "録音",
       recognizing: false,
       recognition: null,
-      language: 'ja',
+      language: '日本語',
     }
   },
   props:  {
@@ -69,7 +71,7 @@ export default {
       this.status = "録音";
     },
     setText() {
-      if(this.language == "ja"){
+      if(this.language == "日本語"){
         var newText = textarea.value + '。' + '\n';
       } else {
         var newText = textarea.value + '.' + '\n';
@@ -79,10 +81,10 @@ export default {
       this.initialize();
     },
     switchLanguage() {
-      if(this.language == "ja") {
-        this.language = "en";
+      if(this.language == "日本語") {
+        this.language = "英語";
       } else {
-        this.language = "ja";
+        this.language = "日本語";
       }
     },
   },

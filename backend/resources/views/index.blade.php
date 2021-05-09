@@ -8,12 +8,12 @@
     <title>VOICE.TEXT</title>
 
     <!-- Styles -->
-    <!-- <link href="css/destyle.css" rel="stylesheet"> -->
+    <link href="css/destyle.css" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
   </head>
   <body>
-    <h1>VOICE.TEXT</h1>
+    <header><h1>VOICE.TEXT</h1></header>
     <div id="app">
       <web-speech-api-component :csrf="{{json_encode(csrf_token())}}"></web-speech-api-component>
     </div>
