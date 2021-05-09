@@ -37548,13 +37548,13 @@ var render = function() {
         _vm._v(" "),
         _c("input", {
           staticClass: "rename",
-          attrs: { type: "text", name: "rename" }
+          attrs: { type: "text", name: "rename", placeholder: "音声テキスト" }
         }),
         _c("span", [_vm._v(".txt")]),
         _vm._v(" "),
         _vm.text == ""
           ? _c("input", {
-              staticClass: "download-btn",
+              staticClass: "fake-download-btn",
               attrs: { value: "ダウンロード", readonly: "true" }
             })
           : _c("input", {

@@ -14,7 +14,8 @@ class HomeController extends Controller
 
     public function download(Request $request){
         $textData = $request->text_data;
-        $rename = $request->rename;
+        if($request->rename == ""){$rename = "音声テキスト";}
+        else {$rename = $request->rename;}
 
         $path = 'storage/files/';
         if( is_writable($path) ) {

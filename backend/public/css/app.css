@@ -1,4 +1,5 @@
 body {
+  font-family: "M PLUS Rounded 1c", sans-serif;
   width: 100vw;
 }
 body header {
@@ -73,6 +74,17 @@ body .container .result-area form .rename {
   resize: none;
   width: 50%;
   height: 30px;
+}
+body .container .result-area form .fake-download-btn {
+  width: 150px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: #eee;
+  padding: 5px;
+  margin-left: 50px;
+  text-align: center;
+  opacity: 0.5;
 }
 body .container .result-area form .download-btn {
   width: 150px;

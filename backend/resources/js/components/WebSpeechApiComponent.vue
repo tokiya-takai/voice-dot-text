@@ -13,8 +13,8 @@
           <input type="hidden" name="_token" v-bind:value="csrf">
           <textarea v-model="text" name="text_data"></textarea>
           <p>ダウンロードするファイルに名前をつける</p>
-          <input type="text" name="rename" class="rename"><span>.txt</span>
-          <input v-if="text == ''" value="ダウンロード" readonly="true" class="download-btn">
+          <input type="text" name="rename" class="rename" placeholder="音声テキスト"><span>.txt</span>
+          <input v-if="text == ''" value="ダウンロード" readonly="true" class="fake-download-btn">
           <input v-else type="submit" value="ダウンロード" class="download-btn">
         </form>
       </div>
