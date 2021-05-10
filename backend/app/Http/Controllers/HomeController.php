@@ -17,7 +17,7 @@ class HomeController extends Controller
         if($request->rename == ""){$rename = "音声テキスト";}
         else {$rename = $request->rename;}
 
-        $path = 'storage/';
+        $path = 'public/storage/';
         if( is_writable($path) ) {
             // 入力された内容でテキストファイルを作成
             $file_name = date('Y-m-d-H-i-s') . $this->random(12);
