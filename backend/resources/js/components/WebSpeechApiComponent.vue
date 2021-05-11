@@ -62,15 +62,18 @@ export default {
       if (this.recognizing) {
         this.recognition.stop();
         this.reset();
-        if(textarea.value != "") {
-          this.textareaStatus = "1";
-        } else {
-          this.textareaStatus = "0";
-        }
+        this.enterReset();
       } else {
         this.recognition.start();
         this.recognizing = true;
         this.status = "停止";
+      }
+    },
+    enterReset() {
+      if(textarea.value != "") {
+        this.textareaStatus = "1";
+      } else {
+        this.textareaStatus = "0";
       }
     },
     reset() {
@@ -87,6 +90,7 @@ export default {
         this.text += newText;
         textarea.value = null;
         this.initialize();
+        this.enterReset();
       }
     },
     switchLanguage() {
