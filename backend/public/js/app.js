@@ -1908,16 +1908,18 @@ __webpack_require__.r(__webpack_exports__);
       if (this.recognizing) {
         this.recognition.stop();
         this.reset();
-
-        if (textarea.value != "") {
-          this.textareaStatus = "1";
-        } else {
-          this.textareaStatus = "0";
-        }
+        this.enterReset();
       } else {
         this.recognition.start();
         this.recognizing = true;
         this.status = "停止";
+      }
+    },
+    enterReset: function enterReset() {
+      if (textarea.value != "") {
+        this.textareaStatus = "1";
+      } else {
+        this.textareaStatus = "0";
       }
     },
     reset: function reset() {
@@ -1935,6 +1937,7 @@ __webpack_require__.r(__webpack_exports__);
         this.text += newText;
         textarea.value = null;
         this.initialize();
+        this.enterReset();
       }
     },
     switchLanguage: function switchLanguage() {
