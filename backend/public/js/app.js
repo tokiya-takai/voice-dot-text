@@ -1873,6 +1873,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       text: "",
+      manualInput: "",
       textareaStatus: "0",
       status: "録音",
       recognizing: false,
@@ -1888,6 +1889,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.initialize();
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    textarea.addEventListener('input', function () {
+      _this.enterReset();
+    });
   },
   methods: {
     initialize: function initialize() {
