@@ -48,7 +48,7 @@
             "@php artisan key:generate --ansi"
         ],
         "post-install-cmd": [
-            "ln -s /app/storage/app/public storage"
+            "@ln -s /app/storage/app/public storage"
         ]
     },
     "extra": {
