@@ -4,7 +4,8 @@
         <div class="flex-area">
           <textarea id="textarea"></textarea>
           <button v-on:click="toggleStartStop()" class="rec">{{ status }}</button>
-          <button @click="setText()" class="enter">決定</button>
+          <button v-if="(status=='停止')||(textareaStatus == '0')" class="fake-enter">決定</button>
+          <button v-else @click="setText()" class="enter">決定</button>
           <button v-on:click="switchLanguage()" class="lang">{{ language }}</button>
         </div>
       </div>
@@ -26,6 +27,7 @@ export default {
   data() {
     return {
       text: "",
+      textareaStatus: "0",
       status: "録音",
       recognizing: false,
       recognition: null,
@@ -42,7 +44,7 @@ export default {
     this.initialize();
   },
   methods: {
-    initialize() {
+    initialize() {     
       var recognition = new webkitSpeechRecognition();
       recognition.continuous = true;
       this.reset();
@@ -60,6 +62,11 @@ export default {
       if (this.recognizing) {
         this.recognition.stop();
         this.reset();
+        if(textarea.value != "") {
+          this.textareaStatus = "1";
+        } else {
+          this.textareaStatus = "0";
+        }
       } else {
         this.recognition.start();
         this.recognizing = true;
@@ -71,14 +78,16 @@ export default {
       this.status = "録音";
     },
     setText() {
-      if(this.language == "日本語"){
-        var newText = textarea.value + '。' + '\n';
-      } else {
-        var newText = textarea.value + '.' + '\n';
+      if(textarea.value != ""){
+        if(this.language == "日本語"){
+          var newText = textarea.value + '。' + '\n';
+        } else {
+          var newText = textarea.value + '.' + '\n';
+        }
+        this.text += newText;
+        textarea.value = null;
+        this.initialize();
       }
-      this.text += newText;
-      textarea.value = null;
-      this.initialize();
     },
     switchLanguage() {
       if(this.language == "日本語") {
