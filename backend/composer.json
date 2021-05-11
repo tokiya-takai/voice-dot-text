@@ -48,6 +48,7 @@
             "@php artisan key:generate --ansi"
         ],
         "post-install-cmd": [
+            "ln -nfs /app/storage/app/public",
             "php artisan storage:link"
         ]
     },
