@@ -18,23 +18,12 @@ body {
     margin: 0 auto;
     .input-area {
       height: 30%;
-      // display: grid;
-      // grid-template-columns: 35% 35% 30%;
-      // grid-template-rows:
-      //         [margin-top] 20%
-      //         [textarea] 30%
-      //         [buttons] 30%
-      //         [margin-bottom] 20%;
-      // justify-items: center;
-      // align-items: center;
       display: flex;
       justify-content: center;
       align-items: center;
       .flex-area {
         width: 100%;
         textarea {
-          // grid-column: 1 / -1;
-          // grid-row: textarea;
           width: 100%;
           border: 1px solid black;
           border-radius: 3px;
@@ -50,22 +39,16 @@ body {
           text-align: center;
         }
         .rec {
-          // grid-column: 1 / -3;
-          // grid-row: buttons;
           width: 60px;
-          // margin-left: 65%;
-          // margin-right: 5%;
         }
         .enter {
-          // grid-column: 2 / -2;
-          // grid-row: buttons;
           width: 60px;
-          // margin-right: 65%;
-          // margin-right: 5%;
+        }
+        .fake-enter {
+          width: 60px;
+          opacity: 0.5;
         }
         .lang {
-          // grid-column: 3 / -1;
-          // grid-row: buttons;
           width: 80px;
         }
 

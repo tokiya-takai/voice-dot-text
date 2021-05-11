@@ -1868,10 +1868,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       text: "",
+      textareaStatus: "0",
       status: "録音",
       recognizing: false,
       recognition: null,
@@ -1906,6 +1908,12 @@ __webpack_require__.r(__webpack_exports__);
       if (this.recognizing) {
         this.recognition.stop();
         this.reset();
+
+        if (textarea.value != "") {
+          this.textareaStatus = "1";
+        } else {
+          this.textareaStatus = "0";
+        }
       } else {
         this.recognition.start();
         this.recognizing = true;
@@ -1917,15 +1925,17 @@ __webpack_require__.r(__webpack_exports__);
       this.status = "録音";
     },
     setText: function setText() {
-      if (this.language == "日本語") {
-        var newText = textarea.value + '。' + '\n';
-      } else {
-        var newText = textarea.value + '.' + '\n';
-      }
+      if (textarea.value != "") {
+        if (this.language == "日本語") {
+          var newText = textarea.value + '。' + '\n';
+        } else {
+          var newText = textarea.value + '.' + '\n';
+        }
 
-      this.text += newText;
-      textarea.value = null;
-      this.initialize();
+        this.text += newText;
+        textarea.value = null;
+        this.initialize();
+      }
     },
     switchLanguage: function switchLanguage() {
       if (this.language == "日本語") {
@@ -37488,18 +37498,20 @@ var render = function() {
           [_vm._v(_vm._s(_vm.status))]
         ),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "enter",
-            on: {
-              click: function($event) {
-                return _vm.setText()
-              }
-            }
-          },
-          [_vm._v("決定")]
-        ),
+        _vm.status == "停止" || _vm.textareaStatus == "0"
+          ? _c("button", { staticClass: "fake-enter" }, [_vm._v("決定")])
+          : _c(
+              "button",
+              {
+                staticClass: "enter",
+                on: {
+                  click: function($event) {
+                    return _vm.setText()
+                  }
+                }
+              },
+              [_vm._v("決定")]
+            ),
         _vm._v(" "),
         _c(
           "button",

@@ -48,6 +48,10 @@ body .container .input-area .flex-area .rec {
 body .container .input-area .flex-area .enter {
   width: 60px;
 }
+body .container .input-area .flex-area .fake-enter {
+  width: 60px;
+  opacity: 0.5;
+}
 body .container .input-area .flex-area .lang {
   width: 80px;
 }
