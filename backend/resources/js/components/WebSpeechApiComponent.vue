@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       text: "",
+      manualInput: "",
       textareaStatus: "0",
       status: "録音",
       recognizing: false,
@@ -42,6 +43,11 @@ export default {
   },
   created() {
     this.initialize();
+  },
+  mounted() {
+    textarea.addEventListener('input', () => {
+      this.enterReset();
+    });
   },
   methods: {
     initialize() {     
